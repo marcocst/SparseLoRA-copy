@@ -10,7 +10,7 @@
  2. You can choose to adapt some layers by replacing them with counterparts implemented in `SparseLoralib`. We only support `nn.Linear`, `nn.Embedding`, and `nn.Conv2d` for now. We also support a `MergedLinear` for cases where a single `nn.Linear` represents more than one layers, such as in some implementations of the attention `qkv` projection (see Additional Notes for more).
 
 
- 3. Before the training loop begins, mark only LoRA parameters as trainable.
+ 3. Before the training loop begins, mark only SparseLoRA parameters as trainable.
  ```python
  import SparseLoralib as sparselora
  model = BigModel()
@@ -20,7 +20,7 @@
  for batch in dataloader:
     ...
  ```
- 4. When saving a checkpoint, generate a `state_dict` that only contains LoRA parameters.
+ 4. When saving a checkpoint, generate a `state_dict` that only contains SparseLoRA parameters.
  ```python
  # ===== Before =====
  # torch.save(model.state_dict(), checkpoint_path)
@@ -31,7 +31,7 @@
  ```python
  # Load the pretrained checkpoint first
  model.load_state_dict(torch.load('ckpt_pretrained.pt'), strict=False)
- # Then load the LoRA checkpoint
+ # Then load the SparseLoRA checkpoint
  model.load_state_dict(torch.load('ckpt_lora.pt'), strict=False)
  ```
 
