@@ -1,4 +1,4 @@
-# Adapting RoBERTa and DeBERTa V2 using LoRA
+# Adapting DeBERTa V3 and LLaMa2-7B using SparseLoRA
 
 This folder contains the implementation of LoRA in RoBERTa and DeBERTa V2 using the Python package `lora`. LoRA is described in the following pre-print:
 
